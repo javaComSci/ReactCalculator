@@ -3,12 +3,14 @@ import './App.css';
 import Operands from './Operands.js';
 
 class App extends Component {
-  constuctor(){
-    //super();
-    this.setState({
+  constructor(){
+    super();
+    //this.state = {};
+   /* this.setState({
       currentValue: 0
-    });
-
+    });*/
+    //this.getVal= this.getVal.bind(this);
+    this.getVal = this.getVal.bind(this);
   }
   
   getVal(val){
