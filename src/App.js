@@ -5,7 +5,7 @@ import Operands from './Operands.js';
 class App extends Component {
   constructor(){
     super();
-    //this.state = {};
+    this.state = {};
    /* this.setState({
       currentValue: 0
     });*/
@@ -16,14 +16,14 @@ class App extends Component {
   getVal(val){
       console.log("Value recieved from Operands is " + val);
       this.setState({currentValue: val});
-      document.getElementById("Display").innerHTML = "CurrentValue: " + this.currentValue;
+      //document.getElementById("Display").innerHTML = "CurrentValue: " + this.currentValue;
   }
 
   render() {
     return (
       <div className="App">
-        <h2 id = "Display"> Current Value: {this.currentValue} </h2>
-        <Operands currVal = {this.getVal}/> 
+        <h2 id = "Display"> Current Value: {this.state.currentValue} </h2>
+        <Operands updateValue = {this.getVal}/> 
       </div>
     );
   }

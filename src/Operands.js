@@ -1,12 +1,9 @@
 import React from 'react';
 import "./Operands.css";
+import NumberButton from "./NumberButton.js"
 
 class Operands extends React.Component{
-	val(valu,func){
-		console.log(valu);
-		console.log(func);
-		this.props.currVal(valu);
-	}
+
 	render(){
 		return (
 			<div> 
@@ -14,44 +11,61 @@ class Operands extends React.Component{
 					<tbody> 
 						<tr>
 							<td> 
-								<button onClick = {this.val.bind(this,"7", this.props.currVal)} > 7  
-								</button> 
+								<NumberButton 
+									clickHandler={() => this.props.updateValue("7")}
+									value = "7"
+								/>
 							</td>
 							<td>
-								<button onClick = {this.val.bind(this,"8", this.props.currVal)}> 8  
-								</button> 
+								<NumberButton 
+									clickHandler={() => this.props.updateValue("8")}
+									value = "8"
+								/>
 							</td>
 							<td> 
-								<button onClick = {this.val.bind(this,"9", this.props.currVal)}> 9  
-								</button> 
+								<NumberButton 
+									clickHandler={() => this.props.updateValue("8")}
+									value = "8"
+								/>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<button onClick = {this.val.bind(this,"4", this.props.currVal)}> 4  
-								</button> 
+								<NumberButton 
+									clickHandler={() => this.props.updateValue("4")}
+									value = "4"
+								/>
 							</td>
 							<td>
-								<button onClick = {this.val.bind(this,"5", this.props.currVal)}> 5  
-								</button> 
+								<NumberButton 
+									clickHandler={() => this.props.updateValue("5")}
+									value = "5"
+								/>
 							</td>
 							<td>
-								<button onClick = {this.val.bind(this,"6", this.props.currVal)}> 6  
-								</button> 
+								<NumberButton 
+									clickHandler={() => this.props.updateValue("6")}
+									value = "6"
+								/>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<button onClick = {this.val.bind(this,"1", this.props.currVal)}> 1  
-								</button> 
+								<NumberButton
+									clickHandler={() => this.props.updateValue("1")}
+									value="1"
+								/>
+							</td>
+							<td><NumberButton 
+									clickHandler={() => this.props.updateValue("2")}
+									value = "2"
+								/>
 							</td>
 							<td>
-								<button onClick = {this.val.bind(this,"2", this.props.currVal)}> 2  
-								</button> 
-							</td>
-							<td>
-								<button onClick = {this.val.bind(this,"3", this.props.currVal)}> 3  
-								</button> 
+								<NumberButton 
+									clickHandler={() => this.props.updateValue("3")}
+									value = "3"
+								/>
 							</td>
 						</tr>
 					</tbody>
@@ -60,5 +74,7 @@ class Operands extends React.Component{
 		);
 	}
 }
+
+
 
 export default Operands;
