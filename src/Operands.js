@@ -7,7 +7,7 @@ class Operands extends React.Component{
 	render(){
 		return (
 			<div> 
-				<table>
+				<table id = "numTable">
 					<tbody> 
 						<tr>
 							<td> 
