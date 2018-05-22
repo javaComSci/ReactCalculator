@@ -23,25 +23,28 @@ class App extends Component {
       console.log("Value recieved from Operands is " + val);
       var tempOperandStack = this.state.operandStack.concat(val);
       var tempOperatorStack = this.state.operatorStack;
-      if(this.state.tempOperandStack.length >= 2 && this.state.operatorStack.length >= 1){
-        var val = 0;
+      console.log("Size of temp operator stack is " + this.state.operatorStack.length);
+      if(this.state.tempOperatorStack != null && this.state.tempOperandStack.length >= 2 && this.state.operatorStack.length >= 1){
+        var value = 0;
         var op2 = tempOperandStack.pop();
         var op1 = tempOperandStack.pop();
         var operator = tempOperatorStack.pop();
         switch(operator){
-            case "+": val = op1 + op2;
+            case "+": value = op1 + op2;
                       break;
-            case "-": val = op1 - op2;
+            case "-": value = op1 - op2;
                       break;
-            case "*": val = op1 * op2;
+            case "*": value = op1 * op2;
                       break;
-            case "/": val = op1 / op2;
+            case "/": value = op1 / op2;
                       break;
             default: break;
         }
+        console.log("Here the computed value is " + value);
       }
+      
       this.setState({
-        currentValue: val,
+        currentValue: value,
         operandStack: tempOperandStack
       });
       //document.getElementById("Display").innerHTML = "CurrentValue: " + this.currentValue;
@@ -49,7 +52,11 @@ class App extends Component {
 
   performOp(operator){
     console.log("Operator recieved from Operators is " + operator);
-    if(this.state.operandStack.length >= 2){
+    var tempOperatorStack = this.state.operatorStack.concat(operator);
+    this.setState({
+      operatorStack: tempOperatorStack
+    });
+    /*if(this.state.operandStack.length >= 2){
         var val = 0;
         var tempStack = this.state.operandStack;
         var op2 = tempStack.pop();
@@ -69,7 +76,7 @@ class App extends Component {
             currentValue: val,
             operandStack: tempStack
         });
-    }
+    }*/
   }
 
   render() {

@@ -24,8 +24,8 @@ class Operands extends React.Component{
 							</td>
 							<td> 
 								<NumberButton 
-									clickHandler={() => this.props.updateValue("8")}
-									value = "8"
+									clickHandler={() => this.props.updateValue("9")}
+									value = "9"
 								/>
 							</td>
 						</tr>
