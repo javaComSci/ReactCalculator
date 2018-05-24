@@ -39,6 +39,14 @@ class Operators extends React.Component{
 								/>
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<OperatorButton 
+									sendOperator={() => this.props.getOperator("=")}
+									value = "="
+								/>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
