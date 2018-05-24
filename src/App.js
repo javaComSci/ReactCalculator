@@ -7,6 +7,7 @@ class App extends Component {
  constructor(){
     super();
     this.state = {
+      allValues: "",
       operandStack: [],
       operatorStack: [],
       buffer: "",
@@ -22,34 +23,38 @@ class App extends Component {
   }
   
   getVal(val){
-      console.log("Value recieved from Operands is " + val);
-      var tempBuffer = this.state.buffer + val;
+      console.log("Value recieved from Operands is " + val); 
       this.setState({
-        buffer: tempBuffer,
-        currentValue: tempBuffer
+        buffer: this.state.buffer + val,
+        currentValue: this.state.buffer + val,
+        allValues: this.state.allValues + " " + val
       });
       console.log("Buffer has " + this.state.buffer);
   }
 
   performOp(operator){
     console.log("Operator recieved from Operators is " + operator);
-
     var tempOperandStack = this.state.operandStack.concat(parseInt(this.state.buffer));
     var tempOperatorStack = this.state.operatorStack.concat(operator);
+
     this.setState({
         buffer: "",
         operandStack: tempOperandStack,
-        operatorStack: tempOperatorStack
-      });
-      if(operator != "="){
+        operatorStack: tempOperatorStack,
+        allValues: "=" == operator ? operator : this.state.allValues + " " + operator
+    });
+
+    if(operator != "="){
       return;
     }
+
     var operatorStackLen = tempOperatorStack.length;
     var operandStackLen = tempOperandStack.length;
     console.log("Length of operator stack is " + operatorStackLen);
     console.log("Lenth of operand stack is " + operandStackLen);
     console.log("Operand stack holds " + tempOperandStack);
     console.log("Operator stack holds " + tempOperatorStack);
+
     if(operatorStackLen == operandStackLen){
       while(tempOperandStack.length > 1){
         var op1 = tempOperandStack.shift();
@@ -70,21 +75,32 @@ class App extends Component {
         tempOperandStack.unshift(val);
         console.log("Value added to the beginning is " + tempOperandStack[0]);
       }
+      tempOperatorStack.shift();
+      console.log("TEMP OPERATOR STACK IS " + tempOperatorStack);
+      console.log("TEMP OPERAND STACK IS " + tempOperandStack);
       this.setState({
         buffer: "",
         operandStack: tempOperandStack,
         operatorStack: [],
-        currentValue: tempOperandStack[0]
+        currentValue: tempOperandStack[0],
+        allValues: ""
       });
     }
+
+  }
+
+  clearVal(){
+
   }
 
   render() {
     return (
       <div className="App">
         <h2 id = "Display"> Current Value: {this.state.currentValue} </h2>
+        <p> {this.state.allValues} </p>
         <Operands updateValue = {this.getVal}/> 
         <Operators getOperator = {this.performOp}/>
+        <ClearButton clear = {this.clearVal}/>
       </div>
     );
   }
