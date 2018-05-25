@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100%;
 }
 
 .App-logo {
@@ -20,6 +21,26 @@
 
 .App-intro {
   font-size: large;
+}
+
+#operand{
+  float:left;
+}
+
+#operator{
+  float:right;
+}
+
+#clearButton{
+  margin:auto;
+}
+
+#Display{
+  background-color: gray;
+}
+
+#displaybox{
+  
 }
 
 @keyframes App-logo-spin {

@@ -1,7 +1,13 @@
 import React from 'react';
 
-class ClearButton extends Component{
+class ClearButton extends React.Component{
 	render(){
-		<button onClick = {this.props.clear}> </button>
+		return (
+			<div>
+				<button onClick = {this.props.clear}> Clear </button>
+			</div>
+		);
 	}
 }
+
+export default ClearButton;
